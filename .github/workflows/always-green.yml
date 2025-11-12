@@ -1,0 +1,21 @@
+name: Always Green
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Always Green
+        run: |
+          git config user.name edd-breaks-things
+          git config user.email edward@schauman-haigh.dev
+          git commit --allow-empty -m "Always Green!"
+          git push
